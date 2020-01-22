@@ -1,0 +1,65 @@
+
+.se-react-dropdown {
+  position: relative;
+  display: inline-block;
+
+  .select {
+    width: 200px;
+    height: 35px;
+    //background-color: red;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    color: grey;
+    position: relative;
+
+    .text {
+      line-height: 35px;
+      text-align: left;
+      padding-left: 10px;
+      display: inline-block;
+      width: 100%;
+    }
+
+    svg {
+      position: absolute;
+      width: 16px;
+      right: 8px;
+      top: calc(50% - 6px);
+      width: 10px;
+    }
+
+  }
+
+  .panel {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+
+    //display: none;
+
+    &.hide {
+      display: none;
+    }
+
+    li {
+      cursor: pointer;
+      height: 25px;
+      line-height: 25px;
+      text-align: left;
+      padding-left: 10px;
+      color: grey;
+
+      &:hover{
+        background-color: #f7f7f7;
+      }
+    }
+
+  }
+
+}
