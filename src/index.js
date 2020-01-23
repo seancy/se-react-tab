@@ -1,10 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
-import Dropdown from "./Dropdown";
+import Component from "./component";
 
 const styles = {
   fontFamily: "sans-serif",
-  textAlign: "center"
 };
 
 const arr = [
@@ -18,7 +17,7 @@ const arr = [
 
 const App = () => (
   <div style={styles}>
-    <Dropdown data={arr} onChange={e=>console.log(e)} />
+    <Component data={arr} onChange={e=>console.log(e)} />
   </div>
 );
 

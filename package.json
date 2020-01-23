@@ -1,7 +1,7 @@
 {
-  "name": "se-react-dropdown",
-  "version": "1.0.2",
-  "main": "dist/dropdown.js",
+  "name": "se-react-checkbox-group",
+  "version": "1.0.3",
+  "main": "dist/component.js",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --mode production",
@@ -43,7 +43,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/seancy/se-react-dropdown.git"
+    "url": "git+https://github.com/seancy/se-react-checkbox-group.git"
   },
   "keywords": [
     "react",
@@ -51,8 +51,8 @@
     "range"
   ],
   "bugs": {
-    "url": "https://github.com/seancy/se-react-dropdown/issues"
+    "url": "https://github.com/seancy/se-react-checkbox-group/issues"
   },
-  "homepage": "https://github.com/seancy/se-react-dropdown#readme",
+  "homepage": "https://github.com/seancy/se-react-checkbox-group#readme",
   "description": "scope element Dropdown"
 }

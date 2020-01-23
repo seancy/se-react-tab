@@ -2,16 +2,15 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 module.exports = {
     entry: {
         index:'./src/index.js',
-        select:'./src/Dropdown.js'
+        component:'./src/component.js'
     },
     output:{
         path: path.resolve(__dirname, 'dist'),
         filename:'[name].js',
-        //libraryExport:'DateRange',
-        //libraryTarget: 'commonjs2'
     },
     module:{
         rules:[
@@ -48,16 +47,13 @@ module.exports = {
         ]
     },
     devServer:{
-        port: 8082,
+        port: 8083,
         contentBase: path.join(__dirname, 'dist'),
         watchOptions: {
             hot: true,
             watchContentBase: true,
             poll: true
         }
-    },
-    externals: {
-        //'react': 'commonjs react'
     },
     plugins:[
         new MiniCssExtractPlugin(),
