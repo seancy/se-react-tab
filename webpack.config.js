@@ -47,7 +47,7 @@ module.exports = {
         ]
     },
     devServer:{
-        port: 8083,
+        port: 8084,
         contentBase: path.join(__dirname, 'dist'),
         watchOptions: {
             hot: true,
