@@ -3,6 +3,8 @@ import {render} from "react-dom";
 import Component from "./component";
 import './index.scss'
 
+//import './i18n'
+
 const styles = {
     fontFamily: "sans-serif",
 };
@@ -27,7 +29,7 @@ let fields = [
     { name:'first_name', fieldName:'first_name' },
     { name:'last_name', fieldName:'last_name' },
     { name:'avatar', fieldName:'avatar' },
-    { name:'first_name1', fieldName:'first_name' },
+    /*{ name:'first_name1', fieldName:'first_name' },
     { name:'last_name1', fieldName:'last_name' },
     { name:'first_name2', fieldName:'first_name' },
     { name:'last_name2', fieldName:'last_name' },
@@ -36,7 +38,7 @@ let fields = [
     { name:'first_name4', fieldName:'first_name' },
     { name:'last_name4', fieldName:'last_name' },
     { name:'first_name5', fieldName:'first_name' },
-    { name:'last_name5', fieldName:'last_name' },
+    { name:'last_name5', fieldName:'last_name' },*/
 ]
 let data_p1 = [
     {id: 'a0', test1: 't1', userName: 'The Honor', email: 'honor@example.com', country: 'US'},
@@ -50,18 +52,7 @@ let totalData = {
     email: '3'
 }
 
-const data3 = [
-    {
-        id: 1,
-        email: "george.bluth@reqres.in",
-        first_name: "George",
-        last_name: "Bluth",
-        avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg"
-    }
-]
-
 //https://reqres.in/api/users?page=2
-
 
 class App extends React.Component {
     constructor(props, context) {
@@ -74,7 +65,7 @@ class App extends React.Component {
             rowsCount: 0
         }
 
-        //this.fetchData(1)
+        this.fetchData(1)
     }
 
     loadData() {

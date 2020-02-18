@@ -1,10 +1,12 @@
-import React from "react";
+import React,{Suspense} from "react";
 import "./component.scss"
 import LeftIcon from "./chevron-left-solid.svg"
 import RightIcon from "./chevron-right-solid.svg"
 import Dropdown from 'se-react-dropdown'
+import { useTranslation, withTranslation } from "react-i18next";
+import './i18n'
 
-class Component extends React.Component {
+class Component0 extends React.Component {
     constructor(props, context) {
         super(props, context);
 
@@ -50,12 +52,13 @@ class Component extends React.Component {
         let pages = [...Array(pageCount).keys()].splice(1);
         pages = [...pages, pageCount || 1]
         pages = pages.map(p=>({value:p}))
+        const { t } = this.props;
 
         return (<div className="pagination">
                     <LeftIcon onClick={this.goPrevPage.bind(this)} className={"prev-page"+ (pageNo<=1 ? " disabled" : '')}/>
-                    <span>Page</span>
+                    <span>{t('Page')}</span>
                     <Dropdown data={pages} value={pageNo} onChange={this.switchPage.bind(this)}/>
-                    <span>of {pageCount}</span>
+                    <span>{t('of')} {pageCount}</span>
                     <RightIcon onClick={this.goNextPage.bind(this)}
                                className={'next-page' + (pageNo>pageCount-1 ? ' disabled' : '')}/>
                 </div>)
@@ -63,7 +66,6 @@ class Component extends React.Component {
 
     render() {
         const {totalData, fields, data, pagination} = this.props;
-        //let pageNo = this.state.pageNo
 
         return (
             <div className={'se-react-data-list ' + (this.props.className || '')}>
@@ -84,10 +86,14 @@ class Component extends React.Component {
                             const id = row[this.props.keyField || 'id'];
                             return (
                                 <tr key={id}>
-                                    {Object.keys(row).map(key => {
-                                        const field = fields.find(p => p.fieldName == key)
-                                        return field && (<td key={key} className={'field-'+key}>
-                                            {row[key] || ''}
+                                    {fields.map(item=>{
+                                        let cellValue = ''
+                                        const {name, fieldName} = item;
+                                        if (Object.keys(row).includes(fieldName)){
+                                            cellValue = row[fieldName] || '-'
+                                        }
+                                        return (<td key={name + '-' + fieldName} className={'field-'+fieldName}>
+                                            {cellValue || ''}
                                         </td>)
                                     })}
                                 </tr>
@@ -110,6 +116,8 @@ class Component extends React.Component {
         );
     }
 }
+
+const Component = withTranslation()(Component0)
 
 export default Component;
 
