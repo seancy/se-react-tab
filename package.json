@@ -1,6 +1,6 @@
 {
-  "name": "se-react-data-list",
-  "version": "1.0.10",
+  "name": "se-react-tab",
+  "version": "1.0.0",
   "main": "dist/component.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.config.js ",
@@ -39,12 +39,9 @@
     "react-dom": "^16.12.0"
   },
   "dependencies": {
-    "i18next": "^19.1.0",
-    "i18next-browser-languagedetector": "^4.0.1",
+    "jquery": "^3.4.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-i18next": "^11.3.1",
-    "se-react-dropdown": "^1.0.14"
+    "react-dom": "^16.12.0"
   },
   "repository": {
     "type": "git",
@@ -52,12 +49,11 @@
   },
   "keywords": [
     "react",
-    "date",
-    "range"
+    "tab"
   ],
   "bugs": {
     "url": "https://github.com/seancy/se-react-checkbox-group/issues"
   },
   "homepage": "https://github.com/seancy/se-react-checkbox-group#readme",
-  "description": "scope element Dropdown"
+  "description": "tab"
 }

@@ -1,68 +1,32 @@
 
-.se-react-data-list {
+.se-react-tab {
+  .tab-navs {
+    margin: 0;
+    padding: 0;
 
-  %scrollbar-x {
-    /* width */
-    &::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    /* Track */
-    &::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-
-    /* Handle */
-    &::-webkit-scrollbar-thumb {
-      background: #888;
-      border-radius: 3px;
-    }
-
-    /* Handle on hover */
-    &::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
-  }
-
-  .table-wrapper{
-    @extend %scrollbar-x;
-    width: 100%;
-    overflow-x: auto;
-  }
-
-  $space-between:10px;
-
-  .total-rows {
-    text-align: right;
-    margin-top: $space-between;
-  }
-
-  .pagination {
-    margin-top: $space-between;
-
-    >*{
-      vertical-align: middle;
-    }
-    >span {
-      margin-left: $space-between;
-    }
-
-    .se-react-dropdown {
-      margin-left: $space-between;
-    }
-
-    .prev-page, .next-page {
-      width: 9px;
+    .nav-item{
+      list-style: none;
+      display: inline-block;
       cursor: pointer;
 
-      &.disabled {
-        color: grey;
-        cursor: default;
+      &:not(:last-child){
+        margin-right: 5px;
       }
-    }
 
-    .next-page{
-      margin-left: $space-between
+      &.active {
+        color: grey;
+      }
+
     }
   }
+
+  .tab-contents {
+    .hide {
+      display: none;
+    }
+    .tab-content {
+      margin-top: 10px;
+    }
+  }
+
 }

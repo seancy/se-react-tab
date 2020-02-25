@@ -11,6 +11,8 @@ module.exports = {
     output:{
         path: path.resolve(__dirname, 'dist'),
         filename:'[name].js',
+        //path: path.resolve(__dirname, 'dist/public'),
+        //publicPath:'/public/'
     },
     module:{
         rules:[
@@ -25,7 +27,6 @@ module.exports = {
                 test: /(.scss|.css)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-
                     {
                         loader: 'css-loader',
                         options: {
@@ -46,15 +47,7 @@ module.exports = {
             },
         ]
     },
-    devServer:{
-        port: 8084,
-        contentBase: path.join(__dirname, 'dist'),
-        watchOptions: {
-            hot: true,
-            watchContentBase: true,
-            poll: true
-        }
-    },
+
     plugins:[
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({template:'./src/index.html'})
