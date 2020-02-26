@@ -8,13 +8,6 @@ const styles = {
     fontFamily: "sans-serif",
 };
 
-/*
-const Summary=(props)=>{
-    return (<div className={`summary-component ${(props.className || '')}`}>
-        Summary component
-    </div>)
-}*/
-
 const functionStrs = ['Summary', 'Progress', 'Time Spent']
 const [Summary,Progress,TimeSpent] = functionStrs.map(p=>{
     return (props)=>{
@@ -43,13 +36,11 @@ class App extends React.Component {
         this.myRef = React.createRef();
     }
 
-
-
     render() {
 
         return (
             <div style={styles}>
-                <Component data={App.data}/>
+                <Component onChange={console.log} data={App.data}/>
             </div>
 
         );

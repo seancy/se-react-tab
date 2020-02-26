@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'
 import "./component.scss"
 
 class Component extends React.Component {
@@ -28,11 +29,16 @@ class Component extends React.Component {
                 return p.value==item.value?{...p, active: true}:{...p, active: false}
             })
             return {data}
+        }, ()=>{
+            const {onChange}=this.props
+            onChange && onChange(this.state.data.find(p=>p.active))
         })
     }
 
     render() {
         const {data} = this.state
+        const activeItem = data.find(p => p.active)
+        const Component = activeItem && activeItem.component
 
         return (
             <div className={`se-react-tab`}>
@@ -42,16 +48,31 @@ class Component extends React.Component {
                             className={`nav-item ${p.value}${(p.active ? ' active' : '')}`}>{p.text}</li>
                     ))}
                 </ul>
-                <div className="tab-contents">
-                    {data.map(p => {
-                        const Component = p.component
-                        return p.component ? <Component className={`tab-content ${p.active?'':'hide'}`}/> : ''
-                    })}
+                <div className="tab-content">
+                    {Component && <Component/>}
                 </div>
             </div>
         );
     }
 }
 
+/*
+* {
+                        const Component = p.component
+                        return p.component ? <Component className={`tab-content ${p.active?'':'hide'}`}/> : ''
+                    }
+* */
 export default Component;
 
+
+Component.propTypes = {
+    onChange:PropTypes.func,
+
+    /*data:PropTypes.arrayOf(PropTypes.exact({
+        value:PropTypes.string,
+        text:PropTypes.string
+    })),
+    onEnter:PropTypes.func,
+    onRemove:PropTypes.func,
+    */
+}
