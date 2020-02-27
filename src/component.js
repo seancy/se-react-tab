@@ -49,7 +49,7 @@ class Component extends React.Component {
                     ))}
                 </ul>
                 <div className="tab-content">
-                    {Component && <Component/>}
+                    {Component && <Component {...activeItem.props}/>}
                 </div>
             </div>
         );

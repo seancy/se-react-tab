@@ -11,6 +11,7 @@ const styles = {
 const functionStrs = ['Summary', 'Progress', 'Time Spent']
 const [Summary,Progress,TimeSpent] = functionStrs.map(p=>{
     return (props)=>{
+        console.log(props)
         return (<div className={`${p.toLowerCase()}-component ${(props.className || '')}`}>
             {p} component
         </div>)
@@ -19,7 +20,7 @@ const [Summary,Progress,TimeSpent] = functionStrs.map(p=>{
 
 class App extends React.Component {
     static data = [
-        {text: 'Summary', value: 'summary', component: Summary},
+        {text: 'Summary', value: 'summary', component: Summary, props:{ln:'en'}},
         {text: 'Progress', value: 'progress', component: Progress},
         {text: 'Time Spent', value: 'time_spent', component: TimeSpent},
     ]
