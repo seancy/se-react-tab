@@ -2,7 +2,6 @@ import React from "react";
 import {render} from "react-dom";
 import Component from "./component";
 import './index.scss'
-import $ from "jquery";
 
 const styles = {
     fontFamily: "sans-serif",
@@ -27,21 +26,13 @@ class App extends React.Component {
 
     constructor(props, context) {
         super(props, context);
-
-
-        //fetch data then place data and rowsCount into state
-        this.state = {
-            //data:,
-        }
-
-        this.myRef = React.createRef();
     }
 
     render() {
 
         return (
             <div style={styles}>
-                <Component onChange={console.log} data={App.data}/>
+                <Component activeValue="progress" onChange={console.log} data={App.data}/>
             </div>
 
         );

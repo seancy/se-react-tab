@@ -9,35 +9,25 @@ class Component extends React.Component {
         const data = (this.props.data || [
             {text: 'Summary', value: 'summary'},
             {text: 'Progress', value: 'progress'}
-        ]).map((p, index) => {
-            let active = false
-            if (index == 0) {
-                active = true
-            }
-            return {...p, active}
-        })
+        ])
 
+        const {activeValue}=this.props
         this.state = {
-            data
+            data,
+            activeValue:activeValue || (data && data.length ? data[0].value : '')
         };
     }
 
     activeNav(item){
-        this.setState(prev=>{
-            let data = prev.data
-            data = data.map(p=>{
-                return p.value==item.value?{...p, active: true}:{...p, active: false}
-            })
-            return {data}
-        }, ()=>{
+        this.setState({activeValue:item.value}, ()=>{
             const {onChange}=this.props
-            onChange && onChange(this.state.data.find(p=>p.active))
+            onChange && onChange(this.state.data.find(p=>p.value == this.state.activeValue))
         })
     }
 
     render() {
-        const {data} = this.state
-        const activeItem = data.find(p => p.active)
+        const {data, activeValue} = this.state
+        const activeItem = data.find(p => p.value == activeValue)
         const Component = activeItem && activeItem.component
 
         return (
@@ -45,7 +35,7 @@ class Component extends React.Component {
                 <ul className="tab-navs">
                     {data.map(p => (
                         <li key={p.value} onClick={this.activeNav.bind(this, p)}
-                            className={`nav-item ${p.value}${(p.active ? ' active' : '')}`}>{p.text}</li>
+                            className={`nav-item ${p.value}${(p.value == activeValue ? ' active' : '')}`}>{p.text}</li>
                     ))}
                 </ul>
                 <div className="tab-content">
@@ -56,23 +46,18 @@ class Component extends React.Component {
     }
 }
 
-/*
-* {
-                        const Component = p.component
-                        return p.component ? <Component className={`tab-content ${p.active?'':'hide'}`}/> : ''
-                    }
-* */
 export default Component;
-
 
 Component.propTypes = {
     onChange:PropTypes.func,
-
-    /*data:PropTypes.arrayOf(PropTypes.exact({
+    activeValue:PropTypes.string,
+    data:PropTypes.arrayOf(PropTypes.exact({
         value:PropTypes.string,
-        text:PropTypes.string
+        text:PropTypes.string,
+        component:PropTypes.func,
+        props:PropTypes.exact({
+            defaultLanguage:PropTypes.string,
+            token:PropTypes.string,
+        })
     })),
-    onEnter:PropTypes.func,
-    onRemove:PropTypes.func,
-    */
 }

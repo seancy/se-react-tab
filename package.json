@@ -1,6 +1,6 @@
 {
   "name": "se-react-tab",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/component.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.config.js ",
