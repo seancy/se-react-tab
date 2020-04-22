@@ -1,6 +1,6 @@
 import React from "react";
 import {render} from "react-dom";
-import Component from "./component";
+import Tab from "./component";
 import './index.scss'
 
 const styles = {
@@ -10,16 +10,21 @@ const styles = {
 const functionStrs = ['Summary', 'Progress', 'Time Spent']
 const [Summary,Progress,TimeSpent] = functionStrs.map(p=>{
     return (props)=>{
-        console.log(props)
+        //console.log(props)
         return (<div className={`${p.toLowerCase()}-component ${(props.className || '')}`}>
             {p} component
+            {props.children}
         </div>)
     }
 })
 
 class App extends React.Component {
     static data = [
-        {text: 'Summary', value: 'summary', component: Summary, props:{ln:'en'}},
+        {text: 'Summary', value: 'summary', component: Summary, props:{
+            defaultLanguage:'en',
+            token:'',
+            course_id:'000',
+        }},
         {text: 'Progress', value: 'progress', component: Progress},
         {text: 'Time Spent', value: 'time_spent', component: TimeSpent},
     ]
@@ -32,7 +37,9 @@ class App extends React.Component {
 
         return (
             <div style={styles}>
-                <Component activeValue="progress" onChange={console.log} data={App.data}/>
+                <Tab activeValue="progress" onChange={console.log} data={App.data}>
+                    <div>test info...</div>
+                </Tab>
             </div>
 
         );

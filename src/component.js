@@ -6,27 +6,28 @@ class Component extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        const data = (this.props.data || [
+        /*const data = (this.props.data || [
             {text: 'Summary', value: 'summary'},
             {text: 'Progress', value: 'progress'}
-        ])
+        ])*/
 
-        const {activeValue}=this.props
+        const {activeValue, data}=this.props
         this.state = {
-            data,
+            //data,
             activeValue:activeValue || (data && data.length ? data[0].value : '')
         };
     }
 
     activeNav(item){
         this.setState({activeValue:item.value}, ()=>{
-            const {onChange}=this.props
-            onChange && onChange(this.state.data.find(p=>p.value == this.state.activeValue))
+            const {onChange, data}=this.props
+            onChange && onChange(data.find(p=>p.value == this.state.activeValue))
         })
     }
 
     render() {
-        const {data, activeValue} = this.state
+        const {data}=this.props
+        const {activeValue} = this.state
         const activeItem = data.find(p => p.value == activeValue)
         const Component = activeItem && activeItem.component
 
@@ -39,7 +40,7 @@ class Component extends React.Component {
                     ))}
                 </ul>
                 <div className="tab-content">
-                    {Component && <Component {...activeItem.props}/>}
+                    {Component && <Component {...activeItem.props}>{this.props.children}</Component>}
                 </div>
             </div>
         );
@@ -51,13 +52,15 @@ export default Component;
 Component.propTypes = {
     onChange:PropTypes.func,
     activeValue:PropTypes.string,
-    data:PropTypes.arrayOf(PropTypes.exact({
+    data:PropTypes.array
+    /*data:PropTypes.arrayOf(PropTypes.exact({
         value:PropTypes.string,
         text:PropTypes.string,
         component:PropTypes.func,
         props:PropTypes.exact({
             defaultLanguage:PropTypes.string,
             token:PropTypes.string,
+            course_id:PropTypes.string,
         })
-    })),
+    })),*/
 }
